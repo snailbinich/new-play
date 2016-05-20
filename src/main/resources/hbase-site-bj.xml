@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!-- /** * * Licensed to the Apache Software Foundation (ASF) under one * 
+	or more contributor license agreements. See the NOTICE file * distributed 
+	with this work for additional information * regarding copyright ownership. 
+	The ASF licenses this file * to you under the Apache License, Version 2.0 
+	(the * "License"); you may not use this file except in compliance * with 
+	the License. You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 
+	* * Unless required by applicable law or agreed to in writing, software * 
+	distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the 
+	License for the specific language governing permissions and * limitations 
+	under the License. */ -->
+<configuration>
+
+	<property>
+		<name>hbase.zookeeper.quorum</name>
+		<value>${hbase.site.bj}</value>
+		<description>Comma separated list of servers in the ZooKeeper ensemble
+			(This config. should have been named hbase.zookeeper.ensemble).
+			For example, "host1.mydomain.com,host2.mydomain.com,host3.mydomain.com".
+			By default this is set to localhost for local and pseudo-distributed
+			modes
+			of operation. For a fully-distributed setup, this should be set to a
+			full
+			list of ZooKeeper ensemble servers. If HBASE_MANAGES_ZK is set in
+			hbase-env.sh
+			this is the list of servers which hbase will start/stop ZooKeeper on as
+			part of cluster start/stop. Client-side, we will take this list of
+			ensemble members and put it together with the
+			hbase.zookeeper.clientPort
+			config. and pass it into zookeeper constructor as the connectString
+			parameter.
+		</description>
+	</property>
+	
+	<property>
+		<name>zookeeper.znode.parent</name>
+		<value>${zookeeper.znode.parent.bj}</value>
+	</property>
+	
+	<property>
+		<name>hbase.zookeeper.property.clientPort</name>
+		<value>${hbase.zookeeper.property.clientPort.bj}</value>
+	</property>
+	
+	<property>
+		<name>hbase.client.ipc.pool.type</name>
+		<value>${hbase.client.ipc.pool.type}</value>
+		<description>Which type will be used to select a connection for ipc pool</description>
+	</property>	
+	<property>
+		<name>hbase.ipc.client.tcpnodelay</name>
+		<value>${hbase.ipc.client.tcpnodelay}</value>
+		<description>If or not delay when client receive a connection.</description>
+	</property>
+	<property>
+		<name>hbase.client.ipc.pool.size</name>
+		<value>${hbase.client.ipc.pool.size}</value>
+		<description>Connection pool size.</description>
+	</property>
+	<property>
+		<name>hbase.rpc.timeout</name>
+		<value>${hbase.rpc.timeout}</value>
+		<description>This is for the RPC layer to define how long HBase client
+			applications
+			take for a remote call to time out. It uses pings to check connections
+			but will eventually throw a TimeoutException.
+		</description>
+	</property>
+	<property>
+		<name>hbase.client.operation.timeout</name>
+		<value>${hbase.client.operation.timeout}</value>
+		<description>This is for the RPC layer to define how long HBase client
+			applications take for a remote call to time out on user tables. It 
+			uses pings to check connections but will eventually throw a TimeoutException.
+		</description>
+	</property>
+	<property>
+		<name>hbase.client.meta.operation.timeout</name>
+		<value>${hbase.client.meta.operation.timeout}</value>
+		<description>This is for the RPC layer to define how long HBase client
+			applications take for a remote call to time out on system tables(like meta).</description>
+	</property>
+	<property>
+		<name>hbase.client.pause</name>
+		<value>${hbase.client.pause}</value>
+		<description>General client pause value. Used mostly as value to wait
+			before running a retry of a failed get, region lookup, etc.
+			See hbase.client.retries.number for description of how we backoff from
+			this initial pause amount and how this pause works w/ retries.
+		</description>
+	</property>
+	<property>
+		<name>hbase.client.retries.number</name>
+		<value>${hbase.client.retries.number}</value>
+		<description>Maximum retries. Used as maximum for all retryable
+			operations such as the getting of a cell's value, starting a row
+			update,
+			etc. Retry interval is a rough function based on hbase.client.pause. At
+			first we retry at this interval but then with backoff, we pretty
+			quickly reach
+			retrying every ten seconds. See HConstants#RETRY_BACKOFF for how the backup
+			ramps up. Change this setting and hbase.client.pause to suit your
+			workload.
+		</description>
+	</property>
+	<property>
+		<name>hbase.client.prefetch.limit</name>
+		<value>${hbase.client.prefetch.limit}</value>
+		<description>Number of meta info about region in one request.</description>
+	</property>
+	<property>
+		<name>hbase.client.scanner.caching</name>
+		<value>${hbase.client.scanner.caching}</value>
+		<description>Number of rows in one rpc.</description>
+	</property>
+	<property>
+		<name>hbase.ipc.client.connection.maxidletime</name>
+		<value>${hbase.ipc.client.connection.maxidletime}</value>
+		<description>Rpc idle time limit between client and server. Auto off when exceed.</description>
+	</property>
+	<property>
+		<name>zookeeper.session.timeout</name>
+		<value>${zookeeper.session.timeout}</value>
+		<description>zk session timeout.</description>
+	</property>
+	<property>
+		<name>zookeeper.recovery.retry</name>
+		<value>${zookeeper.recovery.retry}</value>
+		<description>Retries to zk.</description>
+	</property>
+	<property>
+		<name>ipc.socket.timeout</name>
+		<value>${ipc.socket.timeout}</value>
+		<description>Time limit for construction between client and server, like tcp handshake. 
+		Client will put the region server into a fail list if ipc timeout happens.
+		</description>
+	</property>
+	
+	<property>
+		<name>hbase.client.scanner.max.result.size</name>
+		<value>${hbase.client.scanner.max.result.size}</value>
+	</property>
+	
+</configuration>
