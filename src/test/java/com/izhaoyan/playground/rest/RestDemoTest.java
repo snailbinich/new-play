@@ -146,8 +146,9 @@ public class RestDemoTest {
 
     @Test
     public void testGetServerIp() throws UnknownHostException {
-        InetAddress address = getServerIp("ks3-cn-beijing.ksyun.com");
-//        InetAddress address = getServerIp("www.baidu.com");
+//        InetAddress address = getServerIp("ks3-cn-beijing.ksyun.com");
+//        InetAddress address = getServerIp("ks3-cn-beijing.ksyun.com");
+        InetAddress address = getServerIp("kss.ksyun.com");
         System.out.println(address.getHostAddress().toString());
     }
 
