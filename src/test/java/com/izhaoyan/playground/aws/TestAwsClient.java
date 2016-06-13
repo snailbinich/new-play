@@ -15,8 +15,8 @@ import org.junit.Test;
  */
 public class TestAwsClient {
 
-    private String ak = "AKIAITNKW7SZKQQQFA4Q";
-    private String sk = "XluDLokGxbuxwvjKibC7FJe2ZTRBTqfGii0y7CuZ";
+    private String ak = "AKIAITPT3HHZ4NUI5DBQ";
+    private String sk = "pxcHOp5wV7F8ksExJl0ScdJq0HsNDGWIa9zSsrSS";
     private String token = "";
     private String buckeName = "zyks3test";
 
@@ -41,9 +41,8 @@ public class TestAwsClient {
         ListObjectsRequest listObjectsRequest = new ListObjectsRequest();
         listObjectsRequest.setBucketName(buckeName);
         listObjectsRequest.setDelimiter("/");
-//        listObjectsRequest.setPrefix();
+        listObjectsRequest.setPrefix("dirzhaoyan/");
         s3.listObjects(listObjectsRequest);
-
 
 
     }
